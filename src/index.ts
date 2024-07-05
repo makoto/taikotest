@@ -43,7 +43,7 @@ async function main() {
     const verifier = new Contract("0x79C9109b764609df928d16fC4a91e9081F7e87DB", taikol1abi, l1provider);
     // https://github.com/taikoxyz/taiko-mono/blob/main/packages/protocol/contracts/L1/TaikoL1.sol#L201
     const {blockId_, blockHash_, stateRoot_} = await verifier.getLastSyncedBlock()
-    console.log({blockId_:blockId_.toNumber(), blockHash_, stateRoot_})
+    console.log('getLastSyncedBlock response', {blockId_:blockId_.toNumber(), blockHash_, stateRoot_})
     const hexBlockId = blockId_.toHexString().replace('0x0', '0x')
     const proof = await l2provider.send("eth_getProof", [account, hexSlots, hexBlockId]);
     // Code from https://etherscan.io/address/0x56b0d8d04de22f2539945258ddb288c123026775#code
